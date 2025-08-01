@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - VENEZIA</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="nav-logo">VENEZIA</div>
+    <nav class="nav-menu">
+      <a href="index.php" class="activo">Inicio</a>
+      <a href="servicios.php">Servicios</a>
+      <a href="nosotros.php">Nosotros</a>
+      
+
+      <?php if (isset($_SESSION['usuario_id'])): ?>
+          <!--  Si está logueado -->
+          <span style="color:white; margin-left:20px;">👋 Hola, <?php echo $_SESSION['usuario_nombre']; ?></span>
+          <a href="logout.php">Cerrar sesión</a>          
+      <?php else: ?>
+          <!--  Si NO está logueado -->
+          <a href="login.php">Login</a>
+      <?php endif; ?>
+    </nav>
+  </header>
+
+<section class="form-citas">
+  <h2>¡Bienvenido a VENEZIA!</h2>
+  <h2>Iniciar Sesión</h2>
+  <p>Ingresa con tu correo y contraseña para agendar citas.</p>
+
+  <form action="login.php" method="POST" class="agendar-form">
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit" class="btn-cita">➡ Ingresar</button>
+    <a href="registro.php" class="signup-btn">¿No tienes cuenta? Regístrate</a>
+
+  </form>
+</section>
+ <section class="extra-section">
+      <h2>¿Por qué elegir Venezia?</h2>
+      <ul>
+        <p>• Atención personalizada y asesoramiento profesional</p>
+        <p>• Productos premium y tratamientos de alta calidad</p>
+        <p>• Ambiente relajante y experiencia única</p>
+      </ul>
+    </section>
+</body>
+</html>
